@@ -1,0 +1,1 @@
+Este texto está sendo lido por um programa Python criado por mim.
