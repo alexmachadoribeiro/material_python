@@ -76,7 +76,7 @@ def main(page: ft.Page):
 
     page.pubsub.subscribe(on_message)
 
-    # NOTE: DeprecationWarning: dialog is deprecated in version 0.23.0 and will be removed in version 0.26.0. Use Page.overlay.append(dialog) instead.
+    # REVIEW: DeprecationWarning: dialog is deprecated in version 0.23.0 and will be removed in version 0.26.0. Use Page.overlay.append(dialog) instead.
     page.dialog = ft.AlertDialog(
         open=True,
         modal=True,
