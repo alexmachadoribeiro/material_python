@@ -1,6 +1,7 @@
 # importa as bibliotecas
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import declarative_base, sessionmaker
+import os
 
 try:
     # cria a engine
@@ -21,19 +22,43 @@ except Exception as e:
     print(f"Erro ao criar a tabela: {e}")
 
 try:
-    nome = input("Digite o nome do usuário: ")
-    email = input("Digite o email do usuário: ")
-
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    novo_usuario = Usuario(nome=nome, email=email)
+    os.system("cls")
 
-    session.add(novo_usuario)
-    session.commit()
+    while True:
+        cadastrar = input("Deseja cadastrar um novo usuário? (s/n): ").strip().lower()
+        match cadastrar:
+            case "s":
+                nome = input("Digite o nome do usuário: ")
+                email = input("Digite o email do usuário: ")
 
-    print("Registro inserido com sucesso!")
+                novo_usuario = Usuario(nome=nome, email=email)
 
+                session.add(novo_usuario)
+                session.commit()
+
+                os.system("cls")
+
+                print("Registro inserido com sucesso!")
+
+                continue
+            case "n":
+                break
+            case _:
+                print("Opção inválida. Tente novamente.")
+                continue
+
+    usuarios = session.query(Usuario).all()
+
+    os.system("cls")
+
+    print("\nUsuários cadastrados:\n")
+    for usuario in usuarios:
+        print(f"ID: {usuario.id_usuario}")
+        print(f"Nome: {usuario.nome}")
+        print(f"Email: {usuario.email}")
     session.close()
 except Exception as e:
     print(f"Erro ao inserir registro. {e}")
