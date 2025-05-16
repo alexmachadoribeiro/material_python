@@ -25,22 +25,6 @@ class Usuario(Base):
     def set_data_nascimento(self, data_str):
         self.data_nascimento = datetime.strptime(data_str, "%d/%m/%Y").date()
 
-class Ddd(Base):
-    __tablename__ = "ddd"
-
-    id_ddd = Column(Integer, primary_key=True, autoincrement=True)
-    ddd = Column(String(2), nullable=False, unique=True)
-
-
-class Telefone(Base):
-    __tablename__ = "telefone"
-
-    id_telefone = Column(Integer, primary_key=True, autoincrement=True)
-    id_usuario = Column(Integer, ForeignKey("usuario.id_usuario"), nullable=False)
-    id_ddd = Column(Integer, ForeignKey("ddd.id_ddd"), nullable=False)
-    numero = Column(String(10), nullable=False)
-
-
 class Estado(Base):
     __tablename__ = "estado"
 
@@ -67,6 +51,22 @@ class Endereco(Base):
     complemento = Column(String(255), nullable=True)
     bairro = Column(String(255), nullable=False)
     cidade = Column(String(255), nullable=False)
+
+class Ddd(Base):
+    __tablename__ = "ddd"
+
+    id_ddd = Column(Integer, primary_key=True, autoincrement=True)
+    id_estado = Column(Integer, ForeignKey("estado.id_estado"), nullable=False)
+    ddd = Column(String(2), nullable=False)
+
+
+class Telefone(Base):
+    __tablename__ = "telefone"
+
+    id_telefone = Column(Integer, primary_key=True, autoincrement=True)
+    id_usuario = Column(Integer, ForeignKey("usuario.id_usuario"), nullable=False)
+    id_ddd = Column(Integer, ForeignKey("ddd.id_ddd"), nullable=False)
+    numero = Column(String(10), nullable=False)
 # !SECTION
 
 # ANCHOR - cria as tabelas
@@ -104,20 +104,6 @@ if __name__ == "__main__":
                     cpf = input("Digite o CPF do usuário (somente números): ")
                     data_nascimento = input("Digite a data de nascimento do usuário (dd/mm/aaaa): ")
 
-                    while True:
-                        print("Selecione o DDD:")
-
-                        ddd = session.query(Ddd).all()
-                        for d in ddd:
-                            print(f"({d.ddd})")
-                        ddd_usuario = input("Informe o DDD do usuário: ").strip()
-                        if ddd_usuario in ddd:
-                            telefone = input(f"Digite o telefone do usuário (somente números): ({ddd_usuario}) ").strip()
-                            break
-                        else:
-                            print("DDD inválido. Tente novamente.")
-                            continue
-
                     print("Endereço do usuário:")
                     cep = input("Digite o CEP do usuário (somente números): ").strip()
 
@@ -151,21 +137,38 @@ if __name__ == "__main__":
                     complemento = input("Digite o complemento do usuário (opcional): ").strip()
                     numero = input("Digite o número do usuário: ").strip()
 
+                    # REVIEW - selecionar o DDD apenas do estado selecionado
+                    while True:
+                        print("Selecione o DDD:")
+
+                        ddd = session.query(Ddd).all()
+                        for d in ddd:
+                            print(f"({d.ddd})")
+                        ddd_usuario = input("Informe o DDD do usuário: ").strip()
+                        if ddd_usuario in ddd:
+                            telefone = input(f"Digite o telefone do usuário (somente números): ({ddd_usuario}) ").strip()
+                            break
+                        else:
+                            print("DDD inválido. Tente novamente.")
+                            continue
+
                     novo_usuario = Usuario(nome=nome, email=email, cpf=cpf)
                     novo_usuario.set_data_nascimento(data_nascimento)
                     session.add(novo_usuario)
                     session.commit()
 
                     usuario_id = novo_usuario.id_usuario
+                    estado_id = session.query(Estado).filter_by(sigla=estado_usuario).first().id_estado # REVIEW
+                    logradouro_id = session.query(Logradouro).filter_by(logradouro=logradouro_usuario).first().id_logradouro
                     novo_telefone = Telefone(id_usuario=usuario_id, id_ddd=ddd_usuario, numero=telefone)
+
                     session.add(novo_telefone)
                     session.commit()
 
-                    # REVIEW - Verificar o id do estado e logradouro
                     novo_endereco = Endereco(
                         id_usuario=usuario_id,
-                        id_estado=estado_usuario,
-                        id_logradouro=logradouro_usuario,
+                        id_estado=estado_id,
+                        id_logradouro=logradouro_id,
                         cep=cep, numero=numero,
                         complemento=complemento,
                         bairro=bairro,
