@@ -99,14 +99,17 @@ if __name__ == "__main__":
                     os.system("cls")
                     print(f"{'-'*10}Cadastrar novo usuário{'-'*10}\n")
 
+                    # ANCHOR - Dados pessoais
                     nome = input("Digite o nome do usuário: ")
                     email = input("Digite o email do usuário: ")
                     cpf = input("Digite o CPF do usuário (somente números): ")
                     data_nascimento = input("Digite a data de nascimento do usuário (dd/mm/aaaa): ")
 
+                    # SECTION - Endereço
                     print("Endereço do usuário:")
                     cep = input("Digite o CEP do usuário (somente números): ").strip()
 
+                    # ANCHOR - Selecionar o estado
                     while True:
                         print("Selecione o estado:")
                         estado = session.query(Estado).all()
@@ -122,20 +125,22 @@ if __name__ == "__main__":
                     cidade = input("Digite a cidade do usuário: ").strip()
                     bairro = input("Digite o bairro do usuário: ").strip()
 
+                    # ANCHOR - Selecionar o logradouro
                     while True:
                         print("Selecione o logradouro:")
                         logradouro = session.query(Logradouro).all()
                         for l in logradouro:
                             print(f"({l.logradouro})")
-                        logradouro_usuario = input("Informe o logradouro do usuário: ").strip()
+                        logradouro_usuario = input("Informe o logradouro do endereço: ").strip()
                         if logradouro_usuario in logradouro:
                             break
                         else:
                             print("Logradouro inválido. Tente novamente.")
                             continue
 
-                    complemento = input("Digite o complemento do usuário (opcional): ").strip()
-                    numero = input("Digite o número do usuário: ").strip()
+                    complemento = input("Digite o complemento do endereço (opcional): ").strip()
+                    numero = input("Digite o número da residência: ").strip()
+                    # !SECTION
 
                     # REVIEW - selecionar o DDD apenas do estado selecionado
                     while True:
@@ -152,6 +157,7 @@ if __name__ == "__main__":
                             print("DDD inválido. Tente novamente.")
                             continue
 
+                    # ANCHOR - cadastra novo usuário
                     novo_usuario = Usuario(nome=nome, email=email, cpf=cpf)
                     novo_usuario.set_data_nascimento(data_nascimento)
                     session.add(novo_usuario)
@@ -160,11 +166,13 @@ if __name__ == "__main__":
                     usuario_id = novo_usuario.id_usuario
                     estado_id = session.query(Estado).filter_by(sigla=estado_usuario).first().id_estado # REVIEW
                     logradouro_id = session.query(Logradouro).filter_by(logradouro=logradouro_usuario).first().id_logradouro
-                    novo_telefone = Telefone(id_usuario=usuario_id, id_ddd=ddd_usuario, numero=telefone)
 
+                    # ANCHOR - cadastra novo telefone
+                    novo_telefone = Telefone(id_usuario=usuario_id, id_ddd=ddd_usuario, numero=telefone)
                     session.add(novo_telefone)
                     session.commit()
 
+                    # ANCHOR - cadastra novo endereço
                     novo_endereco = Endereco(
                         id_usuario=usuario_id,
                         id_estado=estado_id,
