@@ -1,0 +1,18 @@
+# Nome da sua aplicação
+name: IMC App
+
+# Versão da sua aplicação
+version: 1.0.0
+
+# Autor da aplicação
+author: Alex Machado Ribeiro
+
+# Descrição curta
+description: Aplicativo que calcula o IMC (índice de massa corporal) do usuário.
+
+# Lista de todos os "assets" (recursos) que seu app precisa, incluindo o ícone.
+assets:
+  # O caminho para o seu ícone.
+  - assets/icone_app.png
+
+# TODO: executar no terminal o comando "flet build exe" para windows ou "flet build apk" para android

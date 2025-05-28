@@ -122,3 +122,7 @@ def main(page: ft.Page):
     )
 
 ft.app(main)
+
+# TODO: para criar o executável, use o comando:
+# NOTE - esse funciona: flet pack imc_flet_app/src/main.py --target=imc_flet_app.exe --name=imc_flet_app --icon assets/icone_app.png
+# REVIEW - testar esse depois: flet build src/main.py --target=imc_flet_app.exe --name=imc_flet_app
