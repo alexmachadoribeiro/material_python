@@ -1,10 +1,15 @@
 # **CURSO DE PYTHON**
 ---
 
-## Python 80 horas:
+## Material para os cursos do SENAI:
 
-![alt text](image-1.png)
+- Aperfeiçoamento em Python (80 horas)
+- Python Developer (200 horas)
 
-## Python 200 horas:
+## Descrição:
 
-![alt text](image.png)
+- Na pasta ***assets*** se encontram as imagens utilizadas nas apostilas.
+- Na pasta **códigos-fonte** se encontram os códigos-fonte utilizados nas apostilas.
+- Na pasta ***notebooks*** se encontram as apostilas, todas no formato ***Jupyter Notebook***, com a extensão `.ipynb`.
+- Na pasta ***sql*** se encontram as consultas SQL utilizadas nos bancos de dados dos programas.
+- No arquivo `requirements.txt` se encontram os pacotes e suas respectivas versões utilizadas nos códigos-fonte disponíveis nesse repositório.
