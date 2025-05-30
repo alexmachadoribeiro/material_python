@@ -1,5 +1,4 @@
 # **CURSO DE PYTHON**
----
 
 ## Material para os cursos do SENAI:
 
@@ -13,3 +12,7 @@
 - Na pasta ***notebooks*** se encontram as apostilas, todas no formato ***Jupyter Notebook***, com a extensão `.ipynb`.
 - Na pasta ***sql*** se encontram as consultas SQL utilizadas nos bancos de dados dos programas.
 - No arquivo `requirements.txt` se encontram os pacotes e suas respectivas versões utilizadas nos códigos-fonte disponíveis nesse repositório.
+
+> **Obs:** caso faça o clone deste repositório e  queira utilizar os pacotes reunidos em `requirements.txt`, execute o seguinte comando no terminal após o clone: `pip install -r requirements.txt`.
+
+### **Bons estudos!!! =D**
