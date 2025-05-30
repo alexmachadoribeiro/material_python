@@ -2,8 +2,8 @@
 
 ## Material para os cursos do SENAI:
 
-- [Aperfeiçoamento em Python (80 horas)](https://www.mindmeister.com/app/map/3425168944)
-- [Python Developer (200 horas)](https://www.mindmeister.com/app/map/3425269025)
+- [Aperfeiçoamento em Python (80 horas)](https://mm.tt/map/3425168944?t=ZiwQEBPmsK)
+- [Python Developer (200 horas)](https://mm.tt/map/3425269025?t=VRyJMV74go)
 
 ## Descrição:
 
