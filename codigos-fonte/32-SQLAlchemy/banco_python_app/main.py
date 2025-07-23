@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 
 try:
-    engine = create_engine("sqlite:///db_teste.db")
+    engine = create_engine("sqlite:///database/banco_python_app.db")
     Base = declarative_base()
 
     class Usuario(Base):
