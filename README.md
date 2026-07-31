@@ -1,18 +1,6 @@
 # **CURSO DE PYTHON**
 
-## Material para os cursos do SENAI:
-
-- [Aperfeiçoamento em Python (80 horas)](https://mm.tt/map/3425168944?t=ZiwQEBPmsK)
-- [Python Developer (200 horas)](https://mm.tt/map/3425269025?t=VRyJMV74go)
-
-## Descrição:
-
-- Na pasta ***assets*** se encontram as imagens utilizadas nas apostilas.
-- Na pasta **códigos-fonte** se encontram os códigos-fonte utilizados nas apostilas.
-- Na pasta ***notebooks*** se encontram as apostilas, todas no formato ***Jupyter Notebook***, com a extensão `.ipynb`.
-- Na pasta ***sql*** se encontram as consultas SQL utilizadas nos bancos de dados dos programas.
-- No arquivo `requirements.txt` se encontram os pacotes e suas respectivas versões utilizadas nos códigos-fonte disponíveis nesse repositório.
-
-> **Obs:** caso faça o clone deste repositório e  queira utilizar os pacotes reunidos em `requirements.txt`, execute o seguinte comando no terminal após o clone: `pip install -r requirements.txt`.
-
-### **Bons estudos!!! =D**
+> [!WARNING]
+> Esse repositório está **depreciado** e será desativado em breve, assim que for lançada a nova versão do material de Python em um novo repositório.
+>
+> ### **Abraços a todos!**
