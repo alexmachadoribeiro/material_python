@@ -1,4 +1,4 @@
-# **CURSO DE PYTHON**
+# 🐍 **CURSO DE PYTHON**
 
 # ⚠️ Repositório descontinuado
 
