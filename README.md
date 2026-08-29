@@ -1,6 +1,10 @@
 # **CURSO DE PYTHON**
 
+# ⚠️ Repositório descontinuado
+
 > [!WARNING]
-> Esse repositório está **depreciado** e será desativado em breve, assim que for lançada a nova versão do material de Python em um novo repositório.
+> Esse repositório está **depreciado** e **descontinuado**.
+>
+> Para consultar o novo material, acesse o repositório [Guia Rápido Python](https://github.com/dev-alexmachado/guia_rapido_python). Em breve, este repositório será desativado.
 >
 > ### **Abraços a todos!**
